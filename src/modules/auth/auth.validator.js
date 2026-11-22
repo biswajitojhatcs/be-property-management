@@ -19,3 +19,12 @@ export const registerUserSchema = z.object({
       .default(Role.CUSTOMER),
   }),
 });
+
+export const loginUserSchema = z.object({
+  body: z.object({
+    email: z.email({ error: "Please provide a valid email." }),
+    password: z
+      .string({ error: "Password is required." })
+      .min(5, "Password must be at least  5 character."),
+  }),
+});
