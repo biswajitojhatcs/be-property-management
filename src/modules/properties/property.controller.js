@@ -3,7 +3,10 @@ import states from "../../../data/india_states_uts.json" with { type: "json" };
 import cities from "../../../data/india_cities.json" with { type: "json" };
 
 export const getProperties = async (req, res) => {
-  const property = await propertyService.getAllProperties();
+  const property = await propertyService.getAllProperties({
+    userId: req.user.id,
+    userType: req.user.role,
+  });
   res.status(200).json(property);
 };
 
@@ -12,8 +15,8 @@ export const createProperty = async (req, res) => {
     return res.status(400).json({ message: "Please upload property picture." });
   }
 
-  const state = states.find((item) => item.id === req.body.stateId);
-  const city = cities.find((item) => item.id === req.body.cityId);
+  const state = states.find((item) => item.id === req.validated.body.stateId);
+  const city = cities.find((item) => item.id === req.validated.body.cityId);
   if (!(state && city && city.stateId === state.id)) {
     return res
       .status(400)

@@ -11,7 +11,7 @@ const router = Router();
 router.get("/getAll", getProperties);
 router.post(
   "/create",
-  authorize([Role.PROPERTY_OWNER]),
+  authorize(Role.PROPERTY_OWNER),
   upload.single("file"),
   validate(createPropertySchema),
   createProperty,

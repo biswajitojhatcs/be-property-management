@@ -1,3 +1,4 @@
+import { Status } from "../../../generated/prisma/enums.ts";
 import { prisma } from "../../lib/prisma.js";
 
 export const create = async (data) => {
@@ -25,6 +26,28 @@ export const getAll = async () => {
           lastName: true,
         },
       },
+    },
+  });
+  return properties;
+};
+
+export const getAllForPropertyOwner = async (userId) => {
+  const properties = await prisma.property.findMany({
+    where: {
+      createdById: userId || -1,
+    },
+  });
+  return properties;
+};
+
+export const getAllForCustomer = async () => {
+  const properties = await prisma.property.findMany({
+    where: {
+      status: Status.APPROVED,
+    },
+    omit: {
+      status: true,
+      createdById: true,
     },
   });
   return properties;
