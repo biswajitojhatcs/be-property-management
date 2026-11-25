@@ -1,0 +1,23 @@
+-- CreateTable
+CREATE TABLE `properties` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(191) NOT NULL,
+    `stateId` INTEGER NOT NULL,
+    `cityId` INTEGER NOT NULL,
+    `address` VARCHAR(191) NOT NULL,
+    `price` INTEGER NOT NULL,
+    `noOfBedrooms` INTEGER NOT NULL,
+    `noOfBathrooms` INTEGER NOT NULL,
+    `plotSize` INTEGER NOT NULL,
+    `imageUrl` VARCHAR(191) NOT NULL,
+    `rentType` ENUM('DAILY', 'WEEKLY', 'MONTHLY') NOT NULL,
+    `propertyType` ENUM('RESIDENTIAL_APARTMENT', 'ONE_RK_OR_STUDIO_APARTMENT', 'INDEPENDENT_HOUSE_VILLA', 'BUILDER_FLOOR', 'SERVICED_APARTMENT') NOT NULL,
+    `status` ENUM('PENDING', 'APPROVED', 'REJECTED', 'CANCELLED') NOT NULL,
+    `createdById` INTEGER NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `properties` ADD CONSTRAINT `properties_createdById_fkey` FOREIGN KEY (`createdById`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

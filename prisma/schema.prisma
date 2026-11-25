@@ -14,12 +14,55 @@ enum Role {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  firstName String  @db.VarChar(50)
-  lastName  String? @db.VarChar(50)
-  email     String  @unique @db.VarChar(50)
-  password  String
-  role      Role    @default(CUSTOMER)
+  id         Int        @id @default(autoincrement())
+  firstName  String     @db.VarChar(50)
+  lastName   String?    @db.VarChar(50)
+  email      String     @unique @db.VarChar(50)
+  password   String
+  role       Role       @default(CUSTOMER)
+  properties Property[]
 
   @@map("users")
+}
+
+enum RentType {
+  DAILY
+  WEEKLY
+  MONTHLY
+}
+
+enum PropertyType {
+  RESIDENTIAL_APARTMENT
+  ONE_RK_OR_STUDIO_APARTMENT
+  INDEPENDENT_HOUSE_VILLA
+  BUILDER_FLOOR
+  SERVICED_APARTMENT
+}
+
+enum Status {
+  PENDING
+  APPROVED
+  REJECTED
+  CANCELLED
+}
+
+model Property {
+  id            Int          @id @default(autoincrement())
+  title         String
+  description   String
+  stateId       Int
+  cityId        Int
+  address       String
+  price         Int
+  noOfBedrooms  Int
+  noOfBathrooms Int
+  plotSize      Int
+  imageUrl      String
+  rentType      RentType
+  propertyType  PropertyType
+  status        Status       @default(PENDING)
+  createdById   Int
+  createdBy     User         @relation(fields: [createdById], references: [id])
+
+  @@map("properties")
 }

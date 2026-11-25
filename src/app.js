@@ -1,6 +1,8 @@
 import express from "express";
-import userRouter from "./modules/auth/auth.routes.js";
+import authRouter from "./modules/auth/auth.routes.js";
+import propertiesRouter from "./modules/properties/property.routes.js";
 import globalErrorHandler from "./middlewares/error.middleware.js";
+import { authenticate } from "./middlewares/auth.middleware.js";
 
 const app = express();
 
@@ -10,7 +12,11 @@ app.get("/", (req, res) => {
   return res.send("Hello World!");
 });
 
-app.use("/auth", userRouter);
+app.use("/auth", authRouter);
+
+app.use(authenticate);
+
+app.use("/properties", propertiesRouter);
 
 app.use(globalErrorHandler);
 
