@@ -28,7 +28,7 @@ export const createProperty = async (req, res) => {
     createdById: req.user.id,
   });
   res.status(201).json({
-    message: "file uploaded successfully.",
+    message: "Property added successfully.",
     data: property,
   });
 };

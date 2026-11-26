@@ -125,3 +125,60 @@ Authorization: Bearer <your_jwt_token>
   }
 ]
 ```
+
+## Properties
+
+### 1. Create Property
+
+**`POST /properties/create`**
+
+**Headers:**
+
+```http
+Authorization: Bearer <your_jwt_token>
+Content-Type: multipart/form-data
+```
+
+#### Form-Data Payload
+
+| Field           | Value                              |
+| :-------------- | :--------------------------------- |
+| `title`         | `1BHK in Patia`                    |
+| `description`   | `1 Bed room, 1 Hall and 1 Kitchen` |
+| `stateId`       | 26                                 |
+| `cityId`        | 100                                |
+| `address`       | `Patia, Bhubaneswar`               |
+| `price`         | 1000                               |
+| `noOfBedrooms`  | 1                                  |
+| `noOfBathrooms` | 1                                  |
+| `plotSize`      | 1200                               |
+| `rentType`      | `DAILY`                            |
+| `propertyType`  | `INDEPENDENT_HOUSE_VILLA`          |
+| `file`          | `picture.jpg`                      |
+
+**Success Status:** `201`
+
+**Response:**
+
+```json
+{
+  "message": "Property added successfully.",
+  "data": {
+    "id": 2,
+    "title": "1BHK in patia",
+    "description": "1 Bed room, 1 Hall and 1 Kitchen",
+    "stateId": 26,
+    "cityId": 100,
+    "address": "Patia, Bhubaneswar",
+    "price": 1000,
+    "noOfBedrooms": 1,
+    "noOfBathrooms": 1,
+    "plotSize": 1200,
+    "imageUrl": "picture-33a37d21-cc30-4ab9-a0ba-c66eb11c5ae7.jpg",
+    "rentType": "DAILY",
+    "propertyType": "INDEPENDENT_HOUSE_VILLA",
+    "status": "PENDING",
+    "createdById": 5
+  }
+}
+```
