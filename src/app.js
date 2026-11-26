@@ -3,6 +3,7 @@ import authRouter from "./modules/auth/auth.routes.js";
 import propertiesRouter from "./modules/properties/property.routes.js";
 import globalErrorHandler from "./middlewares/error.middleware.js";
 import { authenticate } from "./middlewares/auth.middleware.js";
+import locationsRouter from "./modules/locations/location.routes.js";
 
 const app = express();
 
@@ -17,6 +18,8 @@ app.use("/auth", authRouter);
 app.use(authenticate);
 
 app.use("/properties", propertiesRouter);
+
+app.use("/locations", locationsRouter);
 
 app.use(globalErrorHandler);
 
