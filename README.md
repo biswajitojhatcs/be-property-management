@@ -65,3 +65,34 @@
   "tokenType": "Bearer"
 }
 ```
+
+## Locations
+
+### 1. State List
+
+**`GET /locations/stateList`**
+
+**Headers:**
+
+```http
+Authorization: Bearer <your_jwt_token>
+```
+
+**Success Status:** `200`
+
+**Response:**
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Andaman and Nicobar Islands",
+    "type": "Union Territory"
+  },
+  {
+    "id": 26,
+    "name": "Odisha",
+    "type": "State"
+  }
+]
+```
