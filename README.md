@@ -96,3 +96,32 @@ Authorization: Bearer <your_jwt_token>
   }
 ]
 ```
+
+### 2. City List
+
+**`GET /locations/cityList/:stateId`**
+
+**Headers:**
+
+```http
+Authorization: Bearer <your_jwt_token>
+```
+
+**Success Status:** `200`
+
+**Response:**
+
+```json
+[
+  {
+    "id": 100,
+    "name": "Bhubaneswar",
+    "stateId": 26
+  },
+  {
+    "id": 380,
+    "name": "Khordha",
+    "stateId": 26
+  }
+]
+```
