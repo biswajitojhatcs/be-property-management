@@ -1,4 +1,4 @@
-import { Status } from "../../../generated/prisma/enums.ts";
+import { Role, Status } from "../../../generated/prisma/enums.ts";
 import { prisma } from "../../lib/prisma.js";
 
 export const create = async (data) => {
@@ -51,4 +51,23 @@ export const getAllForCustomer = async () => {
     },
   });
   return properties;
+};
+
+export const updatePropertyStatus = async ({
+  propertyId,
+  status,
+  userRole,
+  userId,
+}) => {
+  const property = await prisma.property.update({
+    where: {
+      id: propertyId,
+      status: Status.PENDING,
+      createdById: userRole === Role.ADMIN ? undefined : userId,
+    },
+    data: {
+      status,
+    },
+  });
+  return property;
 };

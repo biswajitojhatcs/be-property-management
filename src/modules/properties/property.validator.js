@@ -1,5 +1,9 @@
 import { z } from "zod";
-import { PropertyType, RentType } from "../../../generated/prisma/enums.ts";
+import {
+  PropertyType,
+  RentType,
+  Status,
+} from "../../../generated/prisma/enums.ts";
 
 export const createPropertySchema = z.object({
   body: z.object({
@@ -39,5 +43,14 @@ export const createPropertySchema = z.object({
         error: `Property type must be ${PropertyType.RESIDENTIAL_APARTMENT}, ${PropertyType.ONE_RK_OR_STUDIO_APARTMENT}, ${PropertyType.INDEPENDENT_HOUSE_VILLA}, ${PropertyType.BUILDER_FLOOR} or ${PropertyType.SERVICED_APARTMENT}.`,
       },
     ),
+  }),
+});
+
+export const updatePropertyStatusSchema = z.object({
+  body: z.object({
+    propertyId: z.number({ error: "Property id must be a number" }),
+    status: z.enum([Status.APPROVED, Status.REJECTED, Status.CANCELLED], {
+      error: "Please provide a valid status.",
+    }),
   }),
 });

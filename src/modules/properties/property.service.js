@@ -30,3 +30,18 @@ export const saveProperty = async (data) => {
   });
   return property;
 };
+
+export const updatePropertyStatus = async ({
+  propertyId,
+  status,
+  userRole,
+  userId,
+}) => {
+  const property = await propertyRepository.updatePropertyStatus({
+    propertyId,
+    status,
+    userRole,
+    userId,
+  });
+  return property;
+};
