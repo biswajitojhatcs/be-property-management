@@ -232,6 +232,52 @@ Authorization: Bearer <your_jwt_token>
 ]
 ```
 
+### 3. Property Status Update
+
+**`POST /properties/updateStatus`**
+
+**Headers:**
+
+```http
+Authorization: Bearer <your_jwt_token>
+```
+
+**Request Body:**
+
+```json
+{
+  "propertyId": 2,
+  "status": "APPROVED"
+}
+```
+
+**Success Status:** `200`
+
+**Response:**
+
+```json
+{
+  "message": "Status updated successfully.",
+  "data": {
+    "id": 2,
+    "title": "1Bhk in patia",
+    "description": "it's an independent house",
+    "stateId": 26,
+    "cityId": 100,
+    "address": "Patia, Bhubaneswar",
+    "price": 1000,
+    "noOfBedrooms": 1,
+    "noOfBathrooms": 2,
+    "plotSize": 1000,
+    "imageUrl": "picture-lake-33a37d21-cc30-4ab9-a0ba-c66eb11c5ae7.jpg",
+    "rentType": "DAILY",
+    "propertyType": "INDEPENDENT_HOUSE_VILLA",
+    "status": "APPROVED",
+    "createdById": 5
+  }
+}
+```
+
 ## File Serving
 
 ### 1. Get file
