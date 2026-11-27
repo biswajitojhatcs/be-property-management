@@ -1,14 +1,8 @@
 import multer from "multer";
-import os from "os";
 import path from "path";
 import crypto from "crypto";
 import fs from "fs";
-
-const uploadDir = path.join(
-  os.homedir(),
-  "Documents",
-  "property-management-uploads",
-);
+import uploadDir from "../config/storage.js";
 
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);

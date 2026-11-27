@@ -4,6 +4,7 @@ import propertiesRouter from "./modules/properties/property.routes.js";
 import globalErrorHandler from "./middlewares/error.middleware.js";
 import { authenticate } from "./middlewares/auth.middleware.js";
 import locationsRouter from "./modules/locations/location.routes.js";
+import uploadDir from "./config/storage.js";
 
 const app = express();
 
@@ -14,6 +15,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRouter);
+
+app.use("/files", express.static(uploadDir));
 
 app.use(authenticate);
 
