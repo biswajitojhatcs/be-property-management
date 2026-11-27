@@ -208,11 +208,16 @@ Authorization: Bearer <your_jwt_token>
     "noOfBedrooms": 1,
     "noOfBathrooms": 2,
     "plotSize": 1000,
-    "imageUrl": "picture-lake-33a37d21-cc30-4ab9-a0ba-c66eb11c5ae7.jpg",
+    "imageUrl": "picture-33a37d21-cc30-4ab9-a0ba-c66eb11c5ae7.jpg",
     "rentType": "DAILY",
     "propertyType": "INDEPENDENT_HOUSE_VILLA",
     "status": "PENDING",
     "createdById": 5,
+    "createdBy": {
+      "email": "biswajit@email.com",
+      "firstName": "Biswajit",
+      "lastName": "Ojha"
+    },
     "state": {
       "id": 26,
       "name": "Odisha",
