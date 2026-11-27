@@ -231,3 +231,13 @@ Authorization: Bearer <your_jwt_token>
   }
 ]
 ```
+
+## File Serving
+
+### 1. Get file
+
+**`GET /files/:fileName`**
+
+#### Example:
+
+`<img src="http://localhost:8080/files/picture.jpg" alt="Image" />`
