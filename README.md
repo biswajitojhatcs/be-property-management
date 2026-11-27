@@ -182,3 +182,47 @@ Content-Type: multipart/form-data
   }
 }
 ```
+
+### 2. Property List
+
+**`GET /properties/getAll`**
+
+**Headers:**
+
+```http
+Authorization: Bearer <your_jwt_token>
+```
+
+**Success Status:** `200`
+
+**Response:**
+
+```json
+[
+  {
+    "id": 2,
+    "title": "1Bhk in patia",
+    "description": "it's an independent house",
+    "address": "Patia, Bhubaneswar",
+    "price": 1000,
+    "noOfBedrooms": 1,
+    "noOfBathrooms": 2,
+    "plotSize": 1000,
+    "imageUrl": "picture-lake-33a37d21-cc30-4ab9-a0ba-c66eb11c5ae7.jpg",
+    "rentType": "DAILY",
+    "propertyType": "INDEPENDENT_HOUSE_VILLA",
+    "status": "PENDING",
+    "createdById": 5,
+    "state": {
+      "id": 26,
+      "name": "Odisha",
+      "type": "State"
+    },
+    "city": {
+      "id": 100,
+      "name": "Bhubaneswar",
+      "stateId": 26
+    }
+  }
+]
+```
